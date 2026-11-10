@@ -16,6 +16,7 @@ if (window.location.pathname.endsWith("stats.html")) {
 	setInterval(function () {
 		document.getElementById("stuhl_stats").innerHTML = localStorage.stuhl_stats;
 		document.getElementById("bett_stats").innerHTML = localStorage.bett_stats;
+		document.getElementById("erstspender_stats").innerHTML = localStorage.erstspender_stats;
 		document.getElementById("total_stats").innerHTML = Number(localStorage.bett_stats) + Number(localStorage.stuhl_stats);
 	}, 10
 	)
@@ -25,6 +26,7 @@ function stats_reset() {
 	if (confirm("Sind Sie sicher, dass Sie die Statistik löschen möchten?") == true) {
 		localStorage.stuhl_stats = 0;
 		localStorage.bett_stats = 0;
+		localStorage.erstspender_stats = 0;
 	}
 }
 
@@ -36,6 +38,9 @@ if (!localStorage.bett_stats) {
 	localStorage.bett_stats = 0;
 }
 
+if (!localStorage.erstspender_stats) {
+	localStorage.erstspender_stats = 0;
+}
 
 function timer() {
 	window.location.href = "timer.html";
@@ -321,6 +326,7 @@ function bett(nr) {
 
 		if (state_erstspender == 1) {
 			var duration = erstspender_duration;
+			localStorage.erstspender_stats = Number(localStorage.erstspender_stats) + 1;
 			button.innerHTML = "15:00";
 
 			erstspender();
