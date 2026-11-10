@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Blutspende Efringen-Kirchen",
+    "version": "0.9",
+    "description": "Tool zur Überwachung der Zeit, die die Spender bereits unter Aufsicht verbracht haben.",
+    "icons": {
+        "48": "images/logo_48.png",
+        "64": "images/logo_64.png",
+        "128": "images/logo_128.png"
+    },
+    
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    }
+}
