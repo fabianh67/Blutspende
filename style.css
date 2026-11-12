@@ -228,7 +228,7 @@ table {
 .confirm {
 	color: white;
 	background-color: red;
-	
+
 }
 
 
@@ -293,4 +293,20 @@ table {
 
 .tobi {
 	height: 50px;
+}
+
+#bgColorRed {
+	background-color: lightcoral;
+}
+
+#bgColorGreen {
+	background-color: lightgreen;
+}
+
+#bgColorBlue {
+	background-color: rgb(160, 190, 255);
+}
+
+#bgColorPink {
+	background-color: lightpink;
 }

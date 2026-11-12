@@ -3,14 +3,21 @@ var b_duration1 = 600;
 var b_duration2 = 300;
 var erstspender_duration = 900;
 
+const red = "lightcoral";
+const green = "lightgreen";
+const blue = "rgb(160, 190, 255)"
+const pink = "lightpink"
+
 var audio = new Audio('alert.mp3')
 
-if (document.getElementById("menu_timer")) document.getElementById("menu_timer").addEventListener("click", timer);
-if (document.getElementById("menu_stats")) document.getElementById("menu_stats").addEventListener("click", stats);
-if (document.getElementById("menu_help")) document.getElementById("menu_help").addEventListener("click", help);
-if (document.getElementById("home")) document.getElementById("home").addEventListener("click", home);
+if (window.location.pathname.endsWith("index.html")) {
+	document.getElementById("menu_timer").addEventListener("click", timer);
+	document.getElementById("menu_stats").addEventListener("click", stats);
+	document.getElementById("menu_settings").addEventListener("click", settings);
+	document.getElementById("menu_help").addEventListener("click", help);
+}
 
-if (document.getElementById("reset_stats")) document.getElementById("reset_stats").addEventListener("click", stats_reset);
+if (document.getElementById("home")) document.getElementById("home").addEventListener("click", home);
 
 if (window.location.pathname.endsWith("stats.html")) {
 	setInterval(function () {
@@ -20,6 +27,8 @@ if (window.location.pathname.endsWith("stats.html")) {
 		document.getElementById("total_stats").innerHTML = Number(localStorage.bett_stats) + Number(localStorage.stuhl_stats);
 	}, 10
 	)
+
+	document.getElementById("reset_stats").addEventListener("click", stats_reset);
 }
 
 function stats_reset() {
@@ -46,6 +55,10 @@ function timer() {
 	window.location.href = "timer.html";
 }
 
+function settings() {
+	window.location.href = "settings.html";
+}
+
 function stats() {
 	window.location.href = "stats.html";
 }
@@ -58,6 +71,36 @@ function home() {
 	window.location.href = "index.html";
 }
 
+if (!localStorage.bgColor) {
+	localStorage.bgColor = blue;
+}
+
+if (window.location.pathname.endsWith("settings.html")) {
+	document.getElementById("bgColorRed").addEventListener("click", function () {
+		localStorage.bgColor = red;
+		bgColor();
+	})
+	document.getElementById("bgColorGreen").addEventListener("click", function () {
+		localStorage.bgColor = green;
+		bgColor();
+	})
+	document.getElementById("bgColorBlue").addEventListener("click", function () {
+		localStorage.bgColor = blue;
+		bgColor();
+	})
+	document.getElementById("bgColorPink").addEventListener("click", function () {
+		localStorage.bgColor = pink;
+		bgColor();
+	})
+}
+
+bgColor();
+function bgColor() {
+	const collection = document.getElementsByClassName("background");
+	for (let i = 0; i < collection.length; i++) {
+		collection[i].style.backgroundColor = localStorage.bgColor;
+	}
+}
 
 if (window.location.pathname.endsWith("timer.html")) {
 
